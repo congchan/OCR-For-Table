@@ -76,3 +76,11 @@ def test():
     test_data = json.load(open('test.json'))['Data']
     write_res2file(test_data, 'test.xlsx')
 
+
+
+if __name__ == '__main__':
+    files = [f for f in glob.glob("data/*.*", recursive=True)]
+    os.makedirs('./output/', exist_ok=True)
+    print(files)
+    config = json.load(open("config.json"))
+    run(SecretId=config["SecretId"], SecretKey=config["SecretId"], files=files)
